@@ -85,5 +85,14 @@ pipeline{
                 }
             }
         }
+
+        stage('Docker deploy: Localhost'){
+            when{ expression { params.action == 'create'} }
+            steps{
+                script{
+                    dockerDeploy("${params.aws_account_id}", "${params.Region}", "${params.ECR_REPO_NAME}")
+                }
+            }
+        }
     }
 }
