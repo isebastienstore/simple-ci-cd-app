@@ -34,14 +34,6 @@ pipeline{
         }
 
 
-        stage('Maven Build : maven'){
-            when { expression {  params.action == 'create' } }
-            steps{
-                script{
-                    mvnBuild()
-                }
-            }
-        }
 
         stage('Docker image build: ECR'){
             when { expression { params.action == 'create' } }
