@@ -23,14 +23,7 @@ pipeline{
                 }
             }
         }
-        stage('clean'){
-        when { expression {  params.action == 'create' } }
-            steps{
-                script{
-                    clean()
-                }
-            }
-        }
+
         stage('checkstyle'){
             when { expression {  params.action == 'create' } }
             steps{
